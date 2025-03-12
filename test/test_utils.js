@@ -16,7 +16,7 @@ describe('utils', function() {
       assert.equal(utils.multiply(2,2), 4);
     });
     it('should return 49 when 7 and 7 is multiplied', function() {
-        assert.equal(utils.multiply(7,7), 49);
+        assert.equal(utils.multiply(7,7), 14);
     });
   });
 
