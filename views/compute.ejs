@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -11,18 +10,15 @@
     <a href="/math/divide">divide</a>
     <a href="/math/multiply">multiply</a>
     <a href="/math/subtract">subtract</a>
+
     <h1><%= title %></h1>
-    <p>Welcome to <%= Welcome to the calculator application %></p>
-    <form action="<%= title %>" method="get">
-      <input type="number" name="num1" /> <%= symbol %> 
+    <p>Welcome to the calculator application</p>
+
+    <form action="/math/<%= title %>" method="get">
+      <input type="number" name="num1" /> <%= symbol %>
       <input type="number" name="num2" />
       <br>
-      <button type="submit">submit</button>
+      <button type="submit">Submit</button>
     </form>
-    <%if (result || (typeof result === 'number' && !isNaN(result))) { %>
-      <%= num1 %> <%= symbol %> <%= num2 %> = <%= result %>
-    <% } %>
-
-
   </body>
 </html>
