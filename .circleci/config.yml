@@ -42,4 +42,4 @@
       steps:
         - run:
             name: deploy-application
-            command: ssh -o StrictHostKeyChecking=no $EC2_JakubSieron@$EC2 "rm -rf ExampleApplication/;git clone https://github.com/JakubSieron/ExampleApplication.git; ExampleApplication/deploy.sh
+            command: ssh -o StrictHostKeyChecking=no $EC2_JakubSieron@$EC2 "rm -rf ExampleApplication/;git clone https://github.com/JakubSieron/ExampleApplication.git; ExampleApplication/deploy.sh"
