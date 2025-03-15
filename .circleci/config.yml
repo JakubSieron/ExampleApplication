@@ -17,7 +17,7 @@
             requires:
               - build  
 
-  jobs:
+  jobs:10
     build:
       working_directory: ~/ExampleApplication
       docker:
