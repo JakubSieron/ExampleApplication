@@ -19,7 +19,7 @@
 
   jobs:
     build:
-      working_directory: ~/example_application
+      working_directory: ~/ExampleApplication
       docker:
         - image: circleci/node:10.16.3
       steps:
@@ -42,5 +42,4 @@
       steps:
         - run:
             name: deploy-application
-            command: ssh -o StrictHostKeyChecking=no $EC2_JakubSieron@$EC2 "rm -rf ExampleApplication/;git clone https://github.com/JakubSieron/ExampleApplication.git;      
-            ExampleApplication/deploy.sh
+            command: ssh -o StrictHostKeyChecking=no $EC2_JakubSieron@$EC2 "rm -rf ExampleApplication/;git clone https://github.com/JakubSieron/ExampleApplication.git; ExampleApplication/deploy.sh
