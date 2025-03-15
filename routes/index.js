@@ -3,8 +3,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.redirect("/math")
+  res.render("index", { title: "Strona główna" });
 });
-
 
 module.exports = router;
