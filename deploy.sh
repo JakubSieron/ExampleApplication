@@ -1,15 +1,34 @@
 #!/bin/bash
+
+
 sudo apt update && sudo apt install -y nodejs npm
 sudo npm install -g pm2
+
+
 if [ -d "ExampleApplication" ]; then
   rm -rf ExampleApplication
 fi
 
+
 git clone https://github.com/JakubSieron/ExampleApplication.git || exit 1
 cd ExampleApplication || exit 1
 
+
 npm install || exit 1
 chmod +x ./bin/www || true
+
+
+mkdir -p ssl
+
+
+if [ ! -f "ssl/privatekey.pem" ] || [ ! -f "ssl/server.crt" ]; then
+  echo "Generowanie certyfikatu SSL..."
+  openssl req -x509 -newkey rsa:4096 -keyout ssl/privatekey.pem -out ssl/server.crt -days 10000 -nodes -subj "/C=IE/ST=Leinster/L=Dublin/O=National College of Ireland/OU=School of Computing/CN=ncirl.ie"
+fi
+
+
+sudo ufw allow 8443/tcp
+
 
 pm2 list | grep -q example_app
 if [ $? -eq 0 ]; then
@@ -17,8 +36,9 @@ if [ $? -eq 0 ]; then
   pm2 delete example_app
 fi
 
+
 pm2 start ./bin/www --name example_app -f || exit 1
 pm2 save || true
 pm2 startup || true
 
-exit 0 
+exit 0
