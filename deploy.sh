@@ -18,5 +18,7 @@ if [ $? -eq 0 ]; then
 fi
 
 pm2 start ./bin/www --name example_app -f || exit 1
-pm2 save
-pm2 startup
+pm2 save || true
+pm2 startup || true
+
+exit 0 
